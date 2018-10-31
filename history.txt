@@ -296,3 +296,13 @@ rns.address('carvertoken.test') == token.address
 rns.address('cagataytoken.test')
 rns.address('cagataytoken.test') == token.address
 readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
+receipt = w3.eth.waitForTransactionReceipt(txn_hash)
+txn = raw_ens.functions.setResolver( rns.namehash('cagatayoken.test'), resolver_addr, ).buildTransaction({'gas': 320000})
+txn = reg.functions.register(my_hash, acct.address).buildTransaction({ 'gas': 320000 })
+next_nonce = w3.eth.getTransactionCount(acct.address)
+signable_transaction = dict( txn, nonce=next_nonce, gasPrice=w3.toWei(3, 'gwei'), )
+signature_info = acct.signTransaction(signable_transaction)
+txn_hash = w3.eth.sendRawTransaction(signature_info.rawTransaction)
+receipt = w3.eth.waitForTransactionReceipt(txn_hash)
+receipt
+readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
