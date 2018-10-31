@@ -280,3 +280,19 @@ txn = raw_ens.functions.setResolver( rns.namehash('cagatayoken.test'), resolver_
 rns.address('cagataytoken.test')
 
 readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
+
+token_deployer = w3.eth.contract(abi=token_abi, bytecode=token_code)
+next_nonce = w3.eth.getTransactionCount(acct.address)
+signable_transaction = dict(
+  basic_txn,
+  nonce=next_nonce,
+  gasPrice=w3.toWei(3, 'gwei'),
+)
+signable_transaction = dict( txn, nonce=next_nonce, gasPrice=w3.toWei(3, 'gwei'), )
+signature_info = acct.signTransaction(signable_transaction)
+ txn_hash = w3.eth.sendRawTransaction(signature_info.rawTransaction)
+txn_hash = w3.eth.sendRawTransaction(signature_info.rawTransaction)
+rns.address('carvertoken.test') == token.address
+rns.address('cagataytoken.test')
+rns.address('cagataytoken.test') == token.address
+readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
