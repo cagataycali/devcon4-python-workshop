@@ -4,13 +4,10 @@ block.hash
 from web3 import Account
 from web3.auto.infura.ropsten import w3
 block = w3.eth.getBlock(4281234)
-# block.hash
-
+block.hash
 acct = Account.privateKeyToAccount("")
 acct = Account.privateKeyToAccount("0x82744fb9d57cbd4018522711c3892f0f59ab6bee5acf2019650df903103a432b")
-
-# acct.address
-
+acct.address
 balance = w3.eth.getBalance(acct.address)
 w3.fromWei(balance, "ether")
 bytecode = '''
@@ -149,22 +146,137 @@ token_deployer = w3.eth.contract(abi=token_abi, bytecode=token_code)
 init = token_deployer.constructor(1000)
 basic_txn = init.buildTransaction({'gas': 320000})
 next_nonce = w3.eth.getTransactionCount(acct.address)
-
+signable_transation = dict()
 signable_transation = dict(basic_txn, nonce=next_nonce, gasPrice=w3.toWei(3, 'gwei'))
 
 signable_transaction = dict(basic_txn, nonce=next_nonce, gasPrice=w3.toWei(3, 'gwei'))
 signature_info = acct.signTransaction(signable_transaction)
-
+txn_hash = w3.ethc.sendRawTransaction(signature_info.rawTransaction)
 txn_hash = w3.eth.sendRawTransaction(signature_info.rawTransaction)
 receipt = w3.eth.waitForTransactionReceipt(txn_hash)
-
-
+token = w3.eth.contract(address=receipt.contractAdress, abi=token_abi)
+token = w3.eth.contract(address=receipt.conctractAddress, abi=token_abi)
 token = w3.eth.contract(address=receipt.contractAddress, abi=token_abi)
 token.functions.balanceOf(acct.address).call()
-
-# Just 4 check.
-# receipt.contractAddress
-# acct.address
-
+receipt.conctractAddress
+receipt.concractAddress
+receipt.contractAddress
+acct.address
+%save current_session ~0/
 import readline
+readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop')
+readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
+from ens import ENS
+rns = ENS(w3.providers, addr="0xbaB9717617D7e50264dE6Ee0Ef152a7CA452CF9C")
+rns.address('jarjar.test')
+reg_addr = rns.address('test')
+reg_abi = [{'inputs': [{'name': 'label', 'type': 'bytes32'}, 
+   {'name': 'owner', 'type': 'address'}],
+  'name': 'register', 'outputs': [], 'payable': False,
+  'stateMutability': 'nonpayable', 'constant': False,
+  'type': 'function'}]
+reg = w3.eth.contract(address=reg_addr, abi=reg_abi)
+my_hash = rns.labelhash('carvertoken')
+txn = reg.functions.register(my_hash, acct.address).buildTransaction...
+txn = reg.functions.register(my_hash, acct.address).buildTransaction
+resolver_addr = rns.address('resolver.eth')
+raw_ens = rns.ens._classic_contract
+txn = raw_ens.functions.setResolver(rns.namehash('carvertoken.test'), resolver_addr).build
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+).build
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+).build
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+).build()
+)
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+)
+txn
+resolver_abi = [{ "inputs": [[] }]
+resolver_abi = [{"inputs": [
+   {"name": "node", "type": "bytes32"}, {"name": "addr", "type": "address"}],
+  "constant": False, "name": "setAddr", "outputs": [],
+  "stateMutability": "nonpayable",
+  "payable": False, "type": "function"}]
+
+
+txn = resolver.functions.setAddr(namehash, token.address).buildTr
+txn
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+).buildTransaction
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+).buildTransaction({ 'gas': 320000 })
+txn = resolver.functions.setAddr(namehash, token.address).buildTransaction({ 'gas': 320000 })
+rns.address('carvertoken.test') == token.address
+my_hash = rns.labelhash('cagataytoken')
+tnx = reg.functions.register(my_hash, acct.address).buildTransaction({ 'gas': 320000 })
+resolver_addr = rns.address('resolver.eth')
+raw_ens = rns.ens._classic_contract
+txn = raw_ens.functions.setResolver(
+  rns.namehash('carvertoken.test'),
+  resolver_addr,
+txn = raw_ens.functions.setResolver( rns.namehash('cagataytoken.test'), resolver_addr, ).buildTransaction({ 'gas': 320000})
+resolver_abi = [{"inputs": [
+   {"name": "node", "type": "bytes32"}, {"name": "addr", "type": "address"}],
+  "constant": False, "name": "setAddr", "outputs": [],
+  "stateMutability": "nonpayable",
+  "payable": False, "type": "function"}]
+namehash = rns.namehash('carvertoken.test')
+namehash = rns.namehash('cagataytoken.test')
+txn = resolver.functions.setAddr(namehash, token.address).buildTransaction({ 'gas': 320000 })
+rns.address('cagataytoken.test') == token.address
+readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
+rns.address('cagataytoken.test') == token.address
+my_hash = rns.labelhash('cagataytoken')
+xn = reg.functions.register(my_hash, acct.address).buildTransaction({ 'gas': 320000})
+txn = reg.functions.register(my_hash, acct.address).buildTransaction({ 'gas': 320000})
+namehash = rns.namehash('cagataytoken.test')
+txn = resolver.functions.setAddr(namehash, token.address).buildTransaction({ 'gas': 320000 })
+rns.address('cagataytoken.test') == token.address
+token.address
+rns.address('cagataytoken.test')
+rns
+rns.address('jarjar.test')
+rns.address('cagataytoken.test')
+rns.address('carvertoken.test')
+reg_addr = rns.address('test')
+reg_abi = [{'inputs': [{'name': 'label', 'type': 'bytes32'}, 
+   {'name': 'owner', 'type': 'address'}],
+  'name': 'register', 'outputs': [], 'payable': False,
+  'stateMutability': 'nonpayable', 'constant': False,
+  'type': 'function'}]
+reg = w3.eth.contract(address=reg_addr, abi=reg_abi)
+my_hash = rns.labelhash('cagataytoken')
+txn = reg.functions.register(my_hash, acct.address).buildTransaction({ 'gas': 320000 })
+resolver_addr = rns.address('resolver.eth')
+raw_ens = rns.ens._classic_contract
+txn = raw_ens.functions.setResolver( rns.namehash('cagatayoken.test'), resolver_addr, ).buildTransaction({'gas': 320000})
+resolver_abi = [{"inputs": [
+   {"name": "node", "type": "bytes32"}, {"name": "addr", "type": "address"}],
+  "constant": False, "name": "setAddr", "outputs": [],
+  "stateMutability": "nonpayable",
+  "payable": False, "type": "function"}]
+resolver = w3.eth.contract(address=resolver_addr, abi=resolver_abi)
+namehash = rns.namehash('cagataytoken.test')
+txn = resolver.functions.setAddr(namehash, token.address).buildTransaction({'gas': 320000})
+rns.address('carvertoken.test') == token.address
+txn
+rns.address('cagataytoken.test')
+rns.address('carvertoken.test') == token.address
+token.address
+txn = raw_ens.functions.setResolver( rns.namehash('cagatayoken.test'), resolver_addr, ).buildTransaction({'gas': 320000})
+rns.address('cagataytoken.test')
+
 readline.write_history_file('/Users/cagataycali/Desktop/devcon4-python-workshop/history.txt')
