@@ -11,7 +11,6 @@ https://remix.ethereum.org/
 
 https://colab.research.google.com/drive/16dFYDxKhGcLqX0kK-RE7hdYSs9y9v6G6
 
-
 ![](1.png)
 
 ![](2.png)
